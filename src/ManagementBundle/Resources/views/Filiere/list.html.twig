@@ -1,0 +1,43 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Filiere</h3>
+            </div>
+
+            <div class="box-header  with-border">
+                <div class="">
+                    <a href="{{ path('add_filiere') }}" class="btn btn-xs btn-primary">add new Filiere </a>
+                </div>
+            </div>
+
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for filiere in filieres %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ filiere.code }}</td>
+                            <td>{{ filiere.title}}</td>
+                            <td>
+                                <a href="{{ path('show_filiere',{id:filiere.id}) }}" class="btn btn-success btn-xs">Show</a>
+                                <a href="{{ path('show_filiere',{id:filiere.id}) }}" class="btn btn-danger btn-xs">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

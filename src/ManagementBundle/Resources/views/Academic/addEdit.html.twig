@@ -1,0 +1,43 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Add new Academic Year</h3>
+            </div>
+
+            {{ form_start(form) }}
+            <div class="box-body">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        {{ form_label(form.title) }}
+                        {{ form_widget(form.title,{'attr':{'class':'form-control','placeholder':'Example 2015/2016'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(form.startDate) }}
+                        {{ form_widget(form.startDate) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(form.endDate) }}
+                        {{ form_widget(form.endDate) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_widget(form.save, {'attr':{'class':'btn btn-success'}}) }}
+                        <a href="{{ path('list_academic_year') }}" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock content %}

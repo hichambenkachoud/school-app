@@ -1,0 +1,57 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Add new  Module</h3>
+            </div>
+
+            {{ form_start(form) }}
+            <div class="box-body">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        {{ form_label(form.title) }}
+                        {{ form_widget(form.title,{'attr':{'class':'form-control','placeholder':'Title'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        {{ form_label(form.code) }}
+                        {{ form_widget(form.code, {'attr':{'class':'form-control','placeholder':'Code'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(form.hours) }}
+                        {{ form_widget(form.hours, {'attr':{'class':'form-control','placeholder':'Hours', 'min':0, 'max':100}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(form.coefficient) }}
+                        {{ form_widget(form.coefficient, {'attr':{'class':'form-control','placeholder':'Coefficient', 'min':0, 'max':100}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(form.file) }}
+                        {{ form_widget(form.file, {'attr':{'class':'form-control','placeholder':'Coefficient', 'min':0, 'max':100}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_widget(form.save, {'attr':{'class':'btn btn-success'}}) }}
+                        <a href="{{ path('list_level') }}" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock content %}

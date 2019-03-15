@@ -1,0 +1,12 @@
+profile:
+    title: 'Profile utilisateur'
+    show:
+        lastName: 'Nom'
+        firstName: 'Prénom'
+        roles: 'Rôles'
+        Status: 'Status'
+        enabled: 'Activé'
+        disabled: 'Disactivé'
+    edit:
+        title: 'Modifier'
+        cancel: 'Annuler'

@@ -1,0 +1,69 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+        <div class="container-fluid">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),
+                    'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                <div class="input-group form-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text">{{ form_label(form.lastName) }}</span>
+                    </div>
+                    {{ form_widget(form.lastName, {'attr': {'class' : 'form-control'}}) }}
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text">{{ form_label(form.firstName) }}</span>
+                    </div>
+                    {{ form_widget(form.firstName, {'attr': {'class' : 'form-control'}}) }}
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text">{{ form_label(form.email) }}</span>
+                    </div>
+                    {{ form_widget(form.email, {'attr': {'class' : 'form-control'}}) }}
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text">{{ form_label(form.username) }}</span>
+                    </div>
+                    {{ form_widget(form.username, {'attr': {'class' : 'form-control'}}) }}
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text">{{ form_label(form.plainPassword.first) }}</span>
+                    </div>
+                    {{ form_widget(form.plainPassword.first, {'attr': {'class' : 'form-control'}}) }}
+                </div>
+                <div class="input-group form-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text">{{ form_label(form.plainPassword.second) }}</span>
+                    </div>
+                    {{ form_widget(form.plainPassword.second, {'attr': {'class' : 'form-control'}}) }}
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text">{{ form_label(form.roles) }}</span>
+                    </div>
+                    {{ form_widget(form.roles, {'attr': {'class' : 'form-control select2'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-default btn-sm"/>
+                </div>
+
+            </div>
+        </div>
+
+
+    {{ form_end(form) }}
+
+{% endblock fos_user_content %}

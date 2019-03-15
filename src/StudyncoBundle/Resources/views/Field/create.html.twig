@@ -1,0 +1,36 @@
+{% extends 'StudyncoBundle:Category:menu.html.twig' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            {{ form_start(form, {'method': 'post'}) }}
+
+            <div class="form-group">
+                <label class="">{{ form_label(form.title) }}</label>
+                {{ form_widget(form.title, {'attr':{'class':'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label class="">{{ form_label(form.type) }}</label>
+                {{ form_widget(form.type, {'attr':{'class':'form-control fieldType',}}) }}
+            </div>
+
+            <div class="form-group" id="tableNameField">
+                <label class="">{{ form_label(form.tableName) }}</label>
+                {{ form_widget(form.tableName, {'attr':{'class':'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label class="">{{ form_label(form.category) }}</label>
+                {{ form_widget(form.category, {'attr':{'class':'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(form.save, {'attr':{'class':'btn btn-sm btn-primary'}}) }}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock content %}

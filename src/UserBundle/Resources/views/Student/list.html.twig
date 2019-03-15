@@ -1,0 +1,74 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header  with-border">
+                        <h3 class="box-title">Students list</h3>
+                    </div>
+                    <div class="box-header  with-border">
+                        <div class="">
+                            <a href="{{ path('add_student') }}" class="btn btn-xs btn-primary">add new student </a>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped student-list">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>FirstName</th>
+                                <th>LastName</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>BirthDate</th>
+                                <th style="width: 15%"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ student.firstName }}</td>
+                                <td>{{ student.lastName }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.gender }}</td>
+                                <td>{{ student.phone }}</td>
+                                <td>{{ student.birthDate | date }}</td>
+                                <td>
+                                    <a href="{{ path('show_student',{id:student.id}) }}" class="btn btn-success btn-xs">Show</a>
+                                    <a href="{{ path('show_student',{id:student.id}) }}" class="btn btn-danger btn-xs">Delete</a>
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>FirstName</th>
+                                <th>LastName</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>BirthDate</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+{% endblock content %}

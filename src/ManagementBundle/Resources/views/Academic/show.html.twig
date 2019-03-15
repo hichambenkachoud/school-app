@@ -1,0 +1,41 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Academic Year Information</h3>
+                </div>
+
+                <div class="box-body">
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b> Year  </b> <a class="pull-right">{{ academicYear.title }}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b> Start Date </b> <a class="pull-right">{{ academicYear.startDate | date}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b> End Date </b> <a class="pull-right">{{ academicYear.endDate | date}}</a>
+                        </li>
+                    </ul>
+                    <a href="{{ path('update_academic_year',{id:academicYear.id}) }}" class="btn btn-primary btn-xs">Update</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Refentiels</h3>
+                </div>
+
+                <div class="box-body"></div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

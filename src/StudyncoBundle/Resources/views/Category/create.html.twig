@@ -1,0 +1,35 @@
+{% extends "StudyncoBundle:Category:menu.html.twig" %}
+
+{% block title %} create new category {% endblock title %}
+
+{% block content %}
+    <div class=" container-fluid col-md-6 col-sm-8 col-xs-12">
+        <h1> {% if create is defined %} add {% else %} update {% endif %}new category </h1>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, {'attr' : {'class':'form-control'}}) }}
+            {% if form_errors(form.title) is not empty %}
+                    <div class="alert alert-danger">{{ form_errors(form.title) }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.description, {'attr' : {'class':'alert alert-danger'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.parent) }}
+            {{ form_widget(form.parent, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.parent, {'attr' : {'class':'alert alert-danger'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_widget(form.save, {'attr':{'class':'btn btn-primary'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock content %}

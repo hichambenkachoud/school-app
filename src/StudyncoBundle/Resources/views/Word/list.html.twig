@@ -1,0 +1,58 @@
+{% extends 'StudyncoBundle:Category:menu.html.twig' %}
+
+{% block title %} show word {% endblock title %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <div class="">
+            <a href="{{ path('add_word') }}" class="btn btn-sm btn-primary"> Add New Word </a>
+        </div>
+        <h3> list of Words </h3>
+        <table class="table table-striped" border="1">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th> Title </th>
+                <th> Definition </th>
+                <th>  </th>
+                <th> Synonyms </th>
+            </tr>
+            </thead>
+
+            <tbody>
+                {% for word in words %}
+                    {% if not word.isSynonym %}
+                    <tr>
+                        <td> {{ loop.index }}</td>
+                        <td> {{ word.title }}</td>
+                        <td> {{ word.definition }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{{ path('update_word',{'id':word.id}) }}">edit </a>
+                            <a class="btn btn-success btn-sm" href="{{ path('show_word',{'id':word.id}) }}"> show </a>
+                        </td>
+                        <td>
+                            {% if word.synonym %}
+                                <table width="100%" class="table table-striped" >
+                                    {% for s in word.synonym %}
+                                        <tr id="word-{{ s.id }}">
+                                            <td> {{ s.title }}</td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="{{ path('update_word',{'id':s.id}) }}">edit </a>
+                                                <button class="btn btn-sm btn-danger deleteBtn" id="{{ s.id }}"> Delete </button>
+                                            </td>
+                                        </tr>
+
+                                    {% endfor %}
+                                </table>
+                            {% endif %}
+                        </td>
+                    </tr>
+                        {% endif %}
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+{% endblock content %}

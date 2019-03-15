@@ -1,0 +1,76 @@
+{% extends "StudyncoBundle:Category:menu.html.twig" %}
+
+{% block title %} show category {% endblock title %}
+
+{% block content %}
+    <div class="container-fluid" style="margin-top: 25px;">
+
+        <div class="col-md-8 col-xs-12 col-sm-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2> {% if word.isSynonym %} show the synonym {% else %} show the parent word {% endif %}</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <table class="table table-borderless">
+                        <tbody>
+                        <tr>
+                            <td> Title </td>
+                            <td> {{ word.title }}</td>
+                        </tr>
+                        <tr>
+                            <td> Definition </td>
+                            <td> {{ word.definition }}</td>
+                        </tr>
+                        <tr>
+                            <td> Actions </td>
+                            <td>
+                                <a href="{{ path('update_word', {'id':word.id}) }}" class="btn btn-sm btn-primary"> Edit </a>
+                                <a href="{{ path('list_word') }}" class="btn btn-sm btn-success"> List </a>
+                                <button class="btn btn-sm btn-danger deleteBtn" id="{{ word.id }}"> Delete </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-12">
+            <div class="panel panel-warning">
+                <div class="panel panel-heading">
+                    <h2> {% if word.synonym | length > 0 %} Synonyms {% else %} Parent word {% endif %}</h2>
+                </div>
+                <div class="panel-body">
+                    {% if word.synonym | length > 0 %}
+                        <table width="100%" class="table table-striped">
+                            {% for s in word.synonym %}
+                                <tr>
+                                    <td> {{ s.title }}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="{{ path('update_word',{'id':s.id}) }}">edit </a>
+                                        <a class="btn btn-success btn-sm" href="{{ path('show_word',{'id':s.id}) }}"> show </a>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                        </table>
+
+                        {% else %}
+
+                        <table class="table table-striped" border="0">
+                            <tr>
+                                <td> Title </td>
+                                <td>{{ word.parent.title}}</td>
+                            </tr>
+                            <tr>
+                                <td> Definition </td>
+                                <td>{{ word.parent.definition}}</td>
+                            </tr>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

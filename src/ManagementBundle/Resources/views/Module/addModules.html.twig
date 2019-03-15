@@ -1,0 +1,30 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Add More  Modules </h3>
+            </div>
+
+            {{ form_start(form) }}
+            <div class="box-body">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(form.file) }}
+                        {{ form_widget(form.file, {'attr':{'class':'form-control','placeholder':'Coefficient', 'min':0, 'max':100}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_widget(form.save, {'attr':{'class':'btn btn-success'}}) }}
+                        <a href="{{ path('list_level') }}" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock content %}

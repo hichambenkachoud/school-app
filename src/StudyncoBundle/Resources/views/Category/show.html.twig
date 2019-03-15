@@ -1,0 +1,85 @@
+{% extends "StudyncoBundle:Category:menu.html.twig" %}
+
+{% block title %} create new category {% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 10px;">
+            <a class="btn btn-primary btn-sm" href="{{ path('list_category') }}"> list of categories </a>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Affichage de category
+                </div>
+                <div class="panel-body">
+                    <table class="table table-borderless">
+                        <tbody>
+                        <tr>
+                            <td> Title </td>
+                            <td> {{ category.title }}</td>
+                        </tr>
+                        <tr>
+                            <td> Description </td>
+                            <td> {{ category.description }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-xs-12 col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h2>  Children </h2>
+                </div>
+                <div class="panel-body">
+                        <table width="100%" class="table table-striped">
+                            {% if  category.children | length <= 0 %}
+                                no children available
+                            {% else %}
+                                {% for child in category.children %}
+                                    <tr>
+                                        <td> {{ child.title }}</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm" href="{{ path('category_update',{'id':child.id}) }}">edit </a>
+                                            <a class="btn btn-success btn-sm" href="{{ path('show_category',{'id':child.id}) }}"> show </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-xs-12 col-sm-12">
+            <div class="panel panel-success">
+                <div class="panel panel-heading">
+                    <h2>  Fields </h2>
+                </div>
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped">
+                        {% if  category.fields | length <= 0 %}
+                            no fields available
+                        {% else %}
+                            {% for field in category.fields %}
+                                <tr>
+                                    <td> {{ field.title }}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="{{ path('field_update',{'id':field.id}) }}">edit </a>
+                                        <a class="btn btn-success btn-sm" href="{{ path('field_show',{'id':field.id}) }}"> show </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}

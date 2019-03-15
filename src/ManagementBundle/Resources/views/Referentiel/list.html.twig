@@ -1,0 +1,49 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Referentiel</h3>
+            </div>
+
+            <div class="box-header  with-border">
+                <div class="">
+                    <a href="{{ path('add_referentiel') }}" class="btn btn-xs btn-primary">add new Referentiel </a>
+                </div>
+            </div>
+
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Academic Year</th>
+                        <th>Level</th>
+                        <th>Filiere</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for referentiel in referentiels %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ referentiel.code }}</td>
+                            <td>{{ referentiel.title}}</td>
+                            <td>{{ referentiel.yearAcademic.title}}</td>
+                            <td>{{ referentiel.level.title}}</td>
+                            <td>{{ referentiel.filiere.title}}</td>
+                            <td>
+                                <a href="{{ path('show_referentiel',{id:referentiel.id}) }}" class="btn btn-success btn-xs">Show</a>
+                                <a href="{{ path('show_referentiel',{id:referentiel.id}) }}" class="btn btn-danger btn-xs">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

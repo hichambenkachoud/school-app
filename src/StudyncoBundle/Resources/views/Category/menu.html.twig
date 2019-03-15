@@ -1,0 +1,97 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} list of all categories {% endblock title %}
+
+{% block body %}
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Study&Co</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Accueil <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">About us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Nos Service <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Service 1</a></li>
+                            <li><a href="#">Service 2</a></li>
+                            <li><a href="#">Service 3</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Service 4</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> NOM <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                {% else %}
+                                    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div id="wrapper">
+
+        <div id="sidebar-wrapper" class="">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="{{ path('list_category') }}">Categories</a>
+                </li>
+                <li>
+                    <a href="{{ path('field_list') }}">Champs des categories</a>
+                </li>
+                <li>
+                    <a href="{{ path('list_word') }}">Dictionnaire</a>
+                </li>
+                <li>
+                    <a href="#">Feuilles de route</a>
+                </li>
+                <li>
+                    <a href="#">Partenaire</a>
+                </li>
+                <li>
+                    <a href="#">Organisations</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="content-wrapper">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div>
+
+
+
+
+{% endblock body %}

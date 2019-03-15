@@ -1,0 +1,45 @@
+{% extends 'StudyncoBundle:Category:menu.html.twig' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="form-group">
+            <a href="{{ path('field_create') }}" class="btn btn-sm btn-primary"> Add new Field</a>
+        </div>
+
+        <h3> list of fields </h3>
+        <table class="table table-striped" border="1">
+            <thead>
+                <tr>
+                    <th> N° </th>
+                    <th> Title </th>
+                    <th> Category </th>
+                    <th> Type </th>
+                    <th> Table </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for field in fields %}
+                    <tr id="field-{{ field.id }}">
+                        <td> {{ loop.index }} </td>
+                        <td> {{ field.title }}</td>
+                        <td> {{ field.category.title }}</td>
+                        <td> {{ field.type }}</td>
+                        <td>
+                            {% if field.tableName|length == 0 %}
+                                ----
+                            {% else %}
+                                {{ field.tableName }}
+                            {% endif %}
+                        </td>
+                        <td align="center">
+                            <a href="{{ path('field_update', {'id':field.id}) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <button id="{{ field.id }}"  class="btn btn-sm btn-danger fieldToDelete">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

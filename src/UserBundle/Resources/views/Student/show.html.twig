@@ -1,0 +1,118 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+
+    <div class="">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Student Profile
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li><a href="{{ path('list_student') }}">Students</a></li>
+                <li class="active">Student profile</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" src="{{ asset(student.image.webPath) }}" alt="{{ student.image.webPath }}">
+
+                            <h3 class="profile-username text-center">{{ student.firstName ~ student.lastName}}</h3>
+
+                            <p class="text-muted text-center">Student</p>
+
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Age</b> <a class="pull-right">{{ date_diff(student.birthDate) }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Last Logged In</b> <a class="pull-right">{{ date_diff(student.lastLogin) }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Code</b> <a class="pull-right">{{ student.code }}</a>
+                                </li>
+                            </ul>
+                            <a href="{{ path('update_student',{id:student.id}) }}" class="btn btn-primary btn-xs">Update</a>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-7">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#personnel" data-toggle="tab">Personnel Information</a></li>
+                            <li><a href="#notes" data-toggle="tab">Notes</a></li>
+                            <li><a href="#absences" data-toggle="tab">Absences</a></li>
+                            <li><a href="#skills" data-toggle="tab">Skills</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="personnel">
+
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b> First Name </b> <a class="pull-right">{{ student.firstName }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Last Name </b> <a class="pull-right">{{ student.lastName }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Email </b> <a class="pull-right">{{ student.email }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Gender </b> <a class="pull-right">{{ student.gender }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Birth Date </b> <a class="pull-right">{{ student.birthDate | date("d / m / Y") }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Phone </b> <a class="pull-right">{{ student.phone }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-pane" id="notes">
+                                notes
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="absences">
+                                absences
+                            </div>
+
+                            <div class="tab-pane" id="skills">
+                                <p>
+                                    <span class="label label-danger">UI Design</span>
+                                    <span class="label label-success">Coding</span>
+                                    <span class="label label-info">Javascript</span>
+                                    <span class="label label-warning">PHP</span>
+                                    <span class="label label-primary">Node.js</span>
+                                </p>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+{% endblock content %}

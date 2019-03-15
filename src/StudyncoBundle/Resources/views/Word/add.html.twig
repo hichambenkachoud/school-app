@@ -1,0 +1,37 @@
+{% extends 'StudyncoBundle:Category:menu.html.twig' %}
+
+{% block title %} {% if action == 'add' %}add {% else %} update {% endif %} word {% endblock title %}
+
+{% block content %}
+
+    <div class="container-fluid col-md-6 col-sm-8 col-xs-12">
+        <h3>{% if action == 'add' %} add new {% else %} update {% endif %} Word</h3>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, {'attr':{'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-check">
+            {{ form_widget(form.isSynonym, {'attr':{'class':'form-check-input isSynonym',}}) }}
+            {{ form_label(form.isSynonym, 'is Synonym', {'label_attr': {'class': 'form-check-label'}}) }}
+
+        </div>
+
+        <div class="form-group" id="definitionInput">
+            {{ form_label(form.definition) }}
+            {{ form_widget(form.definition, {'attr':{'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group" id="synonymSelect">
+            {{ form_label(form.parent) }}
+            {{ form_widget(form.parent, {'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_widget(form.save, {'attr':{'class':'btn btn-primary'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock content %}

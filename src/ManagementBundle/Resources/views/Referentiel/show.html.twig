@@ -1,0 +1,47 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Referentiel Information</h3>
+                </div>
+
+                <div class="box-body">
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b> Title  </b> <a class="pull-right">{{ referentiel.title }}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b> Code </b> <a class="pull-right">{{ referentiel.code }}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b> Year Academic </b> <a class="pull-right">{{ referentiel.yearAcademic.title }}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b> Level </b> <a class="pull-right">{{ referentiel.level.title }}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b> Filiere </b> <a class="pull-right">{{ referentiel.filiere.title }}</a>
+                        </li>
+                    </ul>
+                    <a href="{{ path('update_referentiel',{id:referentiel.id}) }}" class="btn btn-primary btn-xs">Update</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Modules</h3>
+                </div>
+
+                <div class="box-body"></div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,6 @@
+[
+  {"firstName":"hicham", "lastName":"benkachoud", "gender":"male", "salary":35000},
+  {"firstName":"hassan", "lastName":"achalhaou", "gender":"female", "salary":45000},
+  {"firstName":"abdelah", "lastName":"banassou", "gender":"male", "salary":15000},
+  {"firstName":"karim", "lastName":"raiss", "gender":"female", "salary":25000}
+]

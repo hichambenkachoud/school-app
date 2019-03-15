@@ -1,0 +1,69 @@
+{% extends "StudyncoBundle:Category:menu.html.twig" %}
+
+{% block title %} list of all categories {% endblock title %}
+
+{% block content %}
+
+    {#
+     {% for f in fields %}
+        {% if f.fields | length != 0 %}
+        {{ dump(f.id) }}
+            {% for ch in  f.fields %}
+                {{ dump(ch) }}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    #}
+
+    <div class="container-fluid">
+        <div class="form-group">
+            <a href="{{ path('create_category') }}" class="btn btn-sm btn-primary">add new category</a>
+        </div>
+        <table class="table table-striped" border="1">
+            <thead>
+                <tr>
+                    <th> N° </th>
+                    <th> Title </th>
+                    <th> Description </th>
+                    <th> Children </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set index = 0 %}
+            {% for category in categories %}
+                {% set index = index + 1 %}
+               <tr>
+                   {% if category.parent == NULL %}
+                   <td> {{ index }}</td>
+                   <td> {{ category.title }}</td>
+                   <td> {{ category.description }}</td>
+                   <td>
+                       {% if category.children %}
+                           <table width="100%" class="table table-striped">
+                           {% for child in category.children %}
+
+                                <tr id="category-{{ child.id }}">
+                                    <td> {{ child.title }}</td>
+                                    <td style="padding-bottom: 5px;">
+                                        <a class="btn btn-primary btn-sm" href="{{ path('category_update',{'id':child.id}) }}">edit </a>
+                                        <button class="btn btn-danger btn-sm btnToDeleteCategory" id="{{ child.id }}"> delete </button>
+                                    </td>
+                                </tr>
+
+                           {% endfor %}
+                           </table>
+                       {% endif %}
+                   </td>
+                   <td>
+                       <a class="btn btn-primary btn-sm" href="{{ path('category_update',{'id':category.id}) }}">edit </a>
+                       <a class="btn btn-success btn-sm" href="{{ path('show_category',{'id':category.id}) }}"> Show </a>
+                   </td>
+                   {% endif %}
+               </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}

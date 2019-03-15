@@ -1,0 +1,25 @@
+.menu{
+    top: 0;
+    left: 0;
+    background-color: #5eb5e0;
+    height: 100px;
+}
+.menu ul{
+    list-style-type: none;
+}
+
+.menu li{
+    float: left;
+    width: 80px;
+}
+.menu .active{
+    color : red;
+}
+
+
+.input-group-addon{
+    width: 60%;
+}
+.input-group{
+    width: 100%;
+}

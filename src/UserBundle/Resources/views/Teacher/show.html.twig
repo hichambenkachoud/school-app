@@ -1,0 +1,96 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+    <div class="">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Teacher Profile
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li><a href="{{ path('list_teacher') }}">Teacher</a></li>
+                <li class="active">Teacher profile</li>
+            </ol>
+        </section>
+        <!-- End Of Content Header (Page header) -->
+
+        <!-- Main Content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" src="{{ asset(teacher.image.webPath) }}">
+                            <h3 class="profile-username text-center">{{ teacher.firstName ~ teacher.lastName }}</h3>
+                            <p class="text-muted text-center">Teacher</p>
+
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b> Age </b><a class="pull-right">{{ date_diff(teacher.birthDate) }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b> Last Logged In </b><a class="pull-right">{{ date_diff(teacher.lastLogin) }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b> CIN </b><a class="pull-right">{{ teacher.cin }}</a>
+                                </li>
+                            </ul>
+                            <a href="{{ path('update_teacher',{id:teacher.id}) }}" class="btn btn-primary btn-xs">Update</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#personnel" data-toggle="tab">Personnel Information</a> </li>
+                            <li><a href="#modules" data-toggle="tab">Modules</a> </li>
+                            <li><a href="#skills" data-toggle="tab">Skills</a> </li>
+                            <li><a href="#cv" data-toggle="tab">Curriculum Vitae</a> </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="personnel">
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b> First Name </b> <a class="pull-right">{{ teacher.firstName }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Last Name </b> <a class="pull-right">{{ teacher.lastName }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Email </b> <a class="pull-right">{{ teacher.email }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Gender </b> <a class="pull-right">{{ teacher.gender }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Phone </b> <a class="pull-right">{{ teacher.type }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Birth Date </b> <a class="pull-right">{{ teacher.birthDate | date("d / m / Y") }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b> Phone </b> <a class="pull-right">{{ teacher.phone }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" id="modules">
+                                modules
+                            </div>
+                            <div class="tab-pane" id="skills">
+                                skills
+                            </div>
+                            <div class="tab-pane" id="cv">
+                                <embed src="{{ asset(teacher.webPath) }}" width="600" height="375"
+                                       type="application/pdf">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}

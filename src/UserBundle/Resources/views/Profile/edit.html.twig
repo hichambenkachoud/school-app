@@ -1,0 +1,46 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="container-fluid">
+        <div class="col-md-6 col-sm-8 col-xs-12">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    {{ 'profile.title'|trans }}
+                </div>
+                {{ form_start(form) }}
+                <div class="panel-body">
+                    <div class="" align="center">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td> {{ form_label(form.email) }} </td>
+                                <td> {{ form_widget(form.email, {'attr':{'class':'form-control'}}) }} </td>
+                            </tr>
+
+                            <tr>
+                                <td> {{ form_label(form.username) }} </td>
+                                <td> {{ form_widget(form.username, {'attr':{'class':'form-control'}}) }} </td>
+                            </tr>
+
+                            <tr>
+                                <td> {{ form_label(form.current_password) }} </td>
+                                <td> {{ form_widget(form.current_password, {'attr':{'class':'form-control'}}) }} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-sm btn-success" />
+                        <a href="{{ path('fos_user_profile_show') }}" class="btn btn-sm btn-danger">{{ 'profile.edit.cancel'|trans }}</a>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <p></p>
+
+        </div>
+
+    </div>
+{% endblock fos_user_content %}

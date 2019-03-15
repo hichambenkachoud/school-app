@@ -1,0 +1,40 @@
+security:
+  encoders:
+    FOS\UserBundle\Model\UserInterface: bcrypt
+
+  role_hierarchy:
+    ROLE_ADMIN:       ROLE_USER
+    ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+  providers:
+    main:
+      id: fos_user.user_provider.username
+    #in_memory:
+     # memory:
+      #  users:
+       #   user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+        #  admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+         # writter: { password: userpass, roles: [ 'ROLE_AUTEUR' ] }
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      pattern: ^/
+      anonymous: true
+      form_login:
+        login_path: fos_user_security_login
+        check_path: fos_user_security_check
+      logout:
+        path:       fos_user_security_logout
+        target:     fos_user_security_login
+      provider: main
+      remember_me:
+          secret:     %secret% # %secret% est un paramètre de parameter
+
+  access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+    - { path: ^/admin/*, roles: ROLE_SUPER_ADMIN}
+    - { path: ^/student, roles: ROLE_ADMIN}
+    - { path: ^/teacher, roles: ROLE_ADMIN}

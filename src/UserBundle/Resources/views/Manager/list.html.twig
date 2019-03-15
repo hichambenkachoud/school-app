@@ -1,0 +1,74 @@
+{% extends 'DashboardBundle:Admin:index.html.twig' %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-success">
+                    <div class="box-header  with-border">
+                        <h3 class="box-title">Manager list</h3>
+                    </div>
+                    <div class="box-header  with-border">
+                        <div class="">
+                            <a href="{{ path('add_manager') }}" class="btn btn-xs btn-primary">add new Manager </a>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped student-list">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>FirstName</th>
+                                <th>LastName</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>BirthDate</th>
+                                <th style="width: 15%"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for manager in managers %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ manager.firstName }}</td>
+                                    <td>{{ manager.lastName }}</td>
+                                    <td>{{ manager.email }}</td>
+                                    <td>{{ manager.gender }}</td>
+                                    <td>{{ manager.phone }}</td>
+                                    <td>{{ manager.birthDate | date }}</td>
+                                    <td>
+                                        <a href="{{ path('show_manager',{id:manager.id}) }}" class="btn btn-success btn-xs">Show</a>
+                                        <a href="{{ path('show_manager',{id:manager.id}) }}" class="btn btn-danger btn-xs">Delete</a>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>FirstName</th>
+                                <th>LastName</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>BirthDate</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+{% endblock content %}

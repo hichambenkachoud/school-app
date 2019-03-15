@@ -1,0 +1,56 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="container-fluid">
+        <div class="col-md-6 col-sm-8 col-xs-12">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    {{ 'profile.title'|trans }}
+                </div>
+                <div class="panel-body">
+                    <div class="" align="center">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td> {{ 'profile.show.lastName'|trans }} </td>
+                                <td> {{ user.lastname }} </td>
+                            </tr>
+                            <tr>
+                                <td> {{ 'profile.show.firstName'|trans }} </td>
+                                <td> {{ user.firstname }} </td>
+                            </tr>
+                            <tr>
+                                <td> {{ 'profile.show.email'|trans }} </td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td> {{ 'profile.show.roles'|trans }} </td>
+                                <td>{% for r in user.roles %} {{ r }} {% endfor %}</td>
+                            </tr>
+
+                            <tr>
+                                <td> {{ 'profile.show.Status'|trans }}</td>
+                                <td>
+                                    {% if user.enabled == 1 %}
+                                        {{ 'profile.show.enabled'|trans }}
+                                     {% else %}
+                                         {{ 'profile.show.disabled'|trans }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-sm btn-success">{{ 'profile.edit.title'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+
+        </div>
+
+    </div>
+{% endblock fos_user_content %}
